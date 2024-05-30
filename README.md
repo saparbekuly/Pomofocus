@@ -26,11 +26,8 @@ https://github.com/saparbekuly/Pomofocus/assets/164681008/3d0c5193-96da-4a00-979
 - **Sound Alerts**: Plays an alarm sound when a session ends.
 - **Custom Time Picker**: Allows users to set custom durations for work and break sessions.
 - **Navigation**: Switch between Pomodoro and Break screens.
+- **Dark Theme Support:**: Pomofocus seamlessly adapts to dark mode, ensuring a pleasant experience for users who prefer darker interfaces.
 
-## Screens
-
-- **Pomodoro Screen**: Displays the Pomodoro timer and navigation to the Break screen.
-- **Break Screen**: Displays the Break timer and navigation to the Pomodoro screen.
 
 ## Setup and Installation
 
@@ -87,42 +84,22 @@ https://github.com/saparbekuly/Pomofocus/assets/164681008/3d0c5193-96da-4a00-979
 - **createNotificationChannel**: Sets up the notification channel for the app.
 - **showNotification**: Displays a notification when a session is complete.
 
-## Dependencies
+### Dependencies
 
 - AndroidX
 - Jetpack Compose
 - MediaPlayer for sound alerts
 
-## Permissions
-
-- **POST_NOTIFICATIONS**: To show notifications when a session is complete.
-
-## Customization
-
-- You can customize the duration of the Pomodoro and break sessions.
-- Modify the notification messages and sounds as per your preference.
-
-## Contributing
-
-Feel free to fork the repository and make changes. Pull requests are welcome!
-
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Acknowledgements
-
-- [Jetpack Compose](https://developer.android.com/jetpack/compose) for the UI components.
-- Icons and images used in the app.
-
-## Contact
-
-For any queries or issues, please contact [beibit.saparbekuly@gmail.com].
 
 ## Conclusion
 
 Pomofocus is designed to help you stay productive by using the Pomodoro Technique, encouraging focused work sessions followed by short breaks. We hope you find this app useful in managing your time and enhancing your productivity.
 
-Thank you for using Pomofocus! We are continuously working to improve the app and appreciate any feedback or contributions. Feel free to reach out if you have any suggestions or encounter any issues.
+Thank you for using Pomofocus! I am continuously working to improve the app and appreciate any feedback or contributions. Feel free to reach out if you have any suggestions or encounter any issues.
+
+For any queries or issues, please contact [beibit.saparbekuly@gmail.com].
 
 Happy focusing!
