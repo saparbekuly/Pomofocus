@@ -1,6 +1,22 @@
 # Pomofocus App
 
-Pomofocus is a productivity app based on the Pomodoro Technique. It helps users work with time rather than against it by breaking work into intervals, traditionally 25 minutes in length, separated by short breaks.
+Pomofocus is a productivity app designed to help users manage their time effectively using the Pomodoro Technique. The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It's based on the idea of breaking work into focused intervals, typically 25 minutes in length, separated by short breaks. This technique aims to improve productivity and concentration by providing structured work periods and regular breaks.
+
+## About the Pomodoro Technique
+
+The Pomodoro Technique consists of six basic steps:
+
+1. **Choose a Task**: Select a task you want to work on.
+2. **Set the Pomodoro**: Set a timer (traditionally to 25 minutes) for your work session.
+3. **Work on the Task**: Focus on the task until the timer rings.
+4. **Take a Short Break**: Take a short break (typically 5 minutes) to rest and recharge.
+5. **Repeat**: After completing a work session and break, repeat the process.
+6. **Longer Breaks**: After completing a set number of work sessions (usually four), take a longer break (typically 15-30 minutes).
+
+## DEMO
+Watch a video demonstration of the application and turn on the sound for a better experience.
+
+https://github.com/saparbekuly/Pomofocus/assets/164681008/3d0c5193-96da-4a00-979e-84f1374cb7cf
 
 ## Features
 
