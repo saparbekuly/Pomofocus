@@ -2,6 +2,8 @@
 
 Pomofocus is a productivity app designed to help users manage their time effectively using the Pomodoro Technique. The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It's based on the idea of breaking work into focused intervals, typically 25 minutes in length, separated by short breaks. This technique aims to improve productivity and concentration by providing structured work periods and regular breaks.
 
+This mobile app for Android is inspired by the Pomofocus web application, offering similar functionality for convenient time management and productivity enhancement on mobile devices.
+
 ## About the Pomodoro Technique
 
 The Pomodoro Technique consists of six basic steps:
