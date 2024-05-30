@@ -12,6 +12,8 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -72,7 +74,8 @@ fun showNotification(context: Context, title: String, message: String) {
     val intent = Intent(context, MainActivity::class.java).apply {
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
     }
-    val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+    val pendingIntent: PendingIntent =
+        PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
     val builder = NotificationCompat.Builder(context, "pomodoro_channel_id")
         .setSmallIcon(R.drawable.app_icon)
@@ -83,7 +86,11 @@ fun showNotification(context: Context, title: String, message: String) {
         .setAutoCancel(true)
 
     with(NotificationManagerCompat.from(context)) {
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             return
         }
         notify(1, builder.build())
@@ -141,7 +148,6 @@ fun PomodoroScreen(navController: NavController) {
                 }
                 navController.navigate("break")
             }
-
         }
     }
 
@@ -165,17 +171,17 @@ fun PomodoroScreen(navController: NavController) {
             .background(BackPomodoro)
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .padding(top = 20.dp)
+                .padding(top = 20.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = R.drawable.logo),
-                contentDescription = "",
                 modifier = Modifier
                     .size(37.dp)
-                    .padding(end = 5.dp)
+                    .padding(end = 5.dp),
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = "",
             )
             Text(
                 text = "Pomofocus",
@@ -190,7 +196,7 @@ fun PomodoroScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(horizontal = 20.dp, vertical = 175.dp)
                 .background(FrontPomodoro, shape = RoundedCornerShape(10.dp)),
-            contentAlignment = Alignment.Center,
+            contentAlignment = Alignment.Center
         ) {
             Column(
                 modifier = Modifier
@@ -319,17 +325,17 @@ fun BreakScreen(navController: NavController) {
             .background(BackBreak)
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .padding(top = 20.dp)
+                .padding(top = 20.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = R.drawable.logo),
-                contentDescription = "",
                 modifier = Modifier
                     .size(37.dp)
-                    .padding(end = 5.dp)
+                    .padding(end = 5.dp),
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = ""
             )
             Text(
                 text = "Pomofocus",
@@ -344,7 +350,7 @@ fun BreakScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(horizontal = 20.dp, vertical = 175.dp)
                 .background(FrontBreak, shape = RoundedCornerShape(10.dp)),
-            contentAlignment = Alignment.Center,
+            contentAlignment = Alignment.Center
         ) {
             Column(
                 modifier = Modifier
@@ -397,7 +403,6 @@ fun BreakScreen(navController: NavController) {
                 )
                 {
                     TimerClock(progress = progress, backColor = BackBreak)
-
                     Text(
                         text = String.format("%02d:%02d", remainingTime / 60, remainingTime % 60),
                         fontSize = 100.sp,
@@ -425,10 +430,17 @@ fun BreakScreen(navController: NavController) {
 }
 
 @Composable
-fun TimerButton(context: Context, text: String, backColor: Color, isPressed: Boolean, onClick: () -> Unit) {
+fun TimerButton(
+    context: Context,
+    text: String,
+    backColor: Color,
+    isPressed: Boolean,
+    onClick: () -> Unit
+) {
     val mediaPlayer = remember {
         MediaPlayer.create(context, R.raw.click_sound)
     }
+
     Box(
         modifier = Modifier
             .padding(7.dp)
@@ -436,7 +448,6 @@ fun TimerButton(context: Context, text: String, backColor: Color, isPressed: Boo
             .width(180.dp),
         contentAlignment = Alignment.Center
     ) {
-
         if (!isPressed) {
             Box(
                 modifier = Modifier
@@ -451,20 +462,20 @@ fun TimerButton(context: Context, text: String, backColor: Color, isPressed: Boo
         }
 
         Button(
-            onClick = {
-                CoroutineScope(Dispatchers.Main).launch {
-                    mediaPlayer.start()
-                }
-                onClick()
-            },
+            modifier = Modifier
+                .fillMaxSize()
+                .offset(y = if (!isPressed) (-7).dp else 0.dp),
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.White,
                 contentColor = backColor
             ),
-            modifier = Modifier
-                .fillMaxSize()
-                .offset(y = if (!isPressed) (-7).dp else 0.dp)
+            onClick = {
+                CoroutineScope(Dispatchers.Main).launch {
+                    mediaPlayer.start()
+                }
+                onClick()
+            }
         ) {
             Text(
                 text = text,
@@ -494,16 +505,16 @@ fun TimePicker(
                 contentAlignment = Alignment.Center
             ) {
                 Button(
-                    onClick = {
-                        onTimeSelected(selectedTime * 60)
-                    },
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .size(120.dp, 44.dp),
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF363636)
                     ),
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .size(120.dp, 44.dp)
+                    onClick = {
+                        onTimeSelected(selectedTime * 60)
+                    }
                 ) {
                     Text(
                         text = "OK",
@@ -517,12 +528,12 @@ fun TimePicker(
         },
         title = {
             Text(
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
                 text = "Time (minutes)",
                 fontFamily = font,
                 fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                color = Color(0xFFaaaaaa),
-                modifier = Modifier.fillMaxWidth()
+                color = Color(0xFFaaaaaa)
             )
         },
         text = {
@@ -534,7 +545,13 @@ fun TimePicker(
                     thickness = 2.dp,
                 )
                 Spacer(modifier = Modifier.height(20.dp))
-                Text(text = "$selectedTime", fontSize = 120.sp, fontFamily = font, fontWeight = FontWeight.Normal, color = Color(0xFF555555))
+                Text(
+                    text = "$selectedTime",
+                    fontSize = 120.sp,
+                    fontFamily = font,
+                    fontWeight = FontWeight.Normal,
+                    color = Color(0xFF555555)
+                )
                 Spacer(modifier = Modifier.height(20.dp))
                 Slider(
                     value = selectedTime.toFloat(),
@@ -553,9 +570,14 @@ fun TimePicker(
 
 @Composable
 fun TimerClock(progress: Float, backColor: Color) {
+    val animatedProgress by animateFloatAsState(
+        targetValue = progress,
+        animationSpec = tween(durationMillis = 1000),
+        label = ""
+    )
+
     Canvas(
-        modifier = Modifier
-            .size(300.dp)
+        modifier = Modifier.size(300.dp)
     ) {
         val strokeWidth = 20f
         val radius = size.width / 2
@@ -573,17 +595,20 @@ fun TimerClock(progress: Float, backColor: Color) {
         drawArc(
             color = Color.White,
             startAngle = -90f,
-            sweepAngle = 360 * progress,
+            sweepAngle = 360 * animatedProgress,
             useCenter = false,
             style = Stroke(strokeWidth)
         )
 
         val indicatorRadius = radius * 1f
         val startAngle = -90f
-        val sweepAngle = 360 * progress
+        val sweepAngle = 360 * animatedProgress
         val endAngle = startAngle + sweepAngle
-        val indicatorX = centerX + indicatorRadius * cos(Math.toRadians(endAngle.toDouble())).toFloat()
-        val indicatorY = centerY + indicatorRadius * sin(Math.toRadians(endAngle.toDouble())).toFloat()
+        val indicatorX =
+            centerX + indicatorRadius * cos(Math.toRadians(endAngle.toDouble())).toFloat()
+        val indicatorY =
+            centerY + indicatorRadius * sin(Math.toRadians(endAngle.toDouble())).toFloat()
+
         drawCircle(
             color = Color.White,
             radius = strokeWidth,
