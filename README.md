@@ -18,7 +18,7 @@ The Pomodoro Technique consists of six basic steps:
 ## DEMO
 Watch a video demonstration of the application and turn on the sound for a better experience.
 
-https://github.com/saparbekuly/Pomofocus/assets/164681008/3d0c5193-96da-4a00-979e-84f1374cb7cf
+https://github.com/saparbekuly/Pomofocus/assets/164681008/9604ca9c-b7aa-4f51-896d-f82ccc870bbb
 
 ## Features
 
