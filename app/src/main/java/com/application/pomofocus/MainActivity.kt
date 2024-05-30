@@ -120,7 +120,7 @@ class MainActivity : ComponentActivity() {
 
 val font = FontFamily(Font(R.font.arialroundedmt))
 const val DEFAULT_POMODORO_TIME = 1500
-const val DEFAULT_BREAK_TIME = 100
+const val DEFAULT_BREAK_TIME = 300
 
 @Composable
 fun PomodoroScreen(navController: NavController) {
