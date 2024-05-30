@@ -119,11 +119,13 @@ class MainActivity : ComponentActivity() {
 }
 
 val font = FontFamily(Font(R.font.arialroundedmt))
+const val DEFAULT_POMODORO_TIME = 1500
+const val DEFAULT_BREAK_TIME = 100
 
 @Composable
 fun PomodoroScreen(navController: NavController) {
     var isStartPressed by remember { mutableStateOf(false) }
-    var totalTime by remember { mutableIntStateOf(1500) } //1500 default 25 min
+    var totalTime by remember { mutableIntStateOf(DEFAULT_POMODORO_TIME) }
     var remainingTime by remember { mutableIntStateOf(totalTime) }
     var showDialog by remember { mutableStateOf(false) }
     var progress by remember { mutableFloatStateOf(1f) }
@@ -277,7 +279,7 @@ fun PomodoroScreen(navController: NavController) {
 @Composable
 fun BreakScreen(navController: NavController) {
     var isStartPressed by remember { mutableStateOf(false) }
-    var totalTime by remember { mutableIntStateOf(300) } //300 default 5 min
+    var totalTime by remember { mutableIntStateOf(DEFAULT_BREAK_TIME) }
     var remainingTime by remember { mutableIntStateOf(totalTime) }
     var showDialog by remember { mutableStateOf(false) }
     var progress by remember { mutableFloatStateOf(1f) }
